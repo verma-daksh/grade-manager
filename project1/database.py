@@ -1,11 +1,18 @@
 import pymysql as sqlcon
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 def connect():
     return sqlcon.connect(
-        host="localhost",
-        user="root",
-        password="14032007@daksh",
-        database="project1"
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
     )
+    
+    
 
 def create_table():
     conn = connect()
